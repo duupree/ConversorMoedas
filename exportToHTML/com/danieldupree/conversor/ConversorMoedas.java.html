@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>ConversorMoedas.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #33ccff; font-weight: bold;}
+.s4 { color: #54b33e;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ConversorMoedas.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.danieldupree.conversor</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">ConversorMoedas {</span>
+    <span class="s0">public static void </span><span class="s1">converter(String de</span><span class="s2">, </span><span class="s1">String para</span><span class="s2">, </span><span class="s0">double </span><span class="s1">valor) {</span>
+        <span class="s0">double </span><span class="s1">cotacao = RequisicaoAPI.buscarCotacao(de</span><span class="s2">, </span><span class="s1">para)</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s1">(cotacao == -</span><span class="s3">1</span><span class="s1">) {</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;Não foi possível obter a cotação.&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s0">return</span><span class="s2">;</span>
+        <span class="s1">}</span>
+
+        <span class="s0">double </span><span class="s1">convertido = valor * cotacao</span><span class="s2">;</span>
+        <span class="s1">System.out.printf(</span><span class="s4">&quot;%.2f %s = %.2f %s%n&quot;</span><span class="s2">, </span><span class="s1">valor</span><span class="s2">, </span><span class="s1">de</span><span class="s2">, </span><span class="s1">convertido</span><span class="s2">, </span><span class="s1">para)</span><span class="s2">;</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>RequisicaoAPI.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #54b33e;}
+.s4 { color: #33ccff; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+RequisicaoAPI.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.danieldupree.conversor</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java.io.BufferedReader</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java.io.InputStreamReader</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java.net.HttpURLConnection</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java.net.URL</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com.google.gson.Gson</span><span class="s2">;</span>
+
+
+<span class="s0">public class </span><span class="s1">RequisicaoAPI {</span>
+
+    <span class="s0">private static final </span><span class="s1">String API_KEY = </span><span class="s3">&quot;74b7f6b35e239bce64203ac8&quot;</span><span class="s2">;</span>
+
+    <span class="s0">public static double </span><span class="s1">buscarCotacao(String moedaBase</span><span class="s2">, </span><span class="s1">String moedaDestino) {</span>
+        <span class="s1">String urlStr = </span><span class="s3">&quot;https://v6.exchangerate-api.com/v6/&quot; </span><span class="s1">+ </span><span class="s3">&quot;74b7f6b35e239bce64203ac8&quot; </span><span class="s1">+ </span><span class="s3">&quot;/pair/&quot; </span><span class="s1">+ moedaBase + </span><span class="s3">&quot;/&quot; </span><span class="s1">+ moedaDestino</span><span class="s2">;</span>
+
+
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">URL url = </span><span class="s0">new </span><span class="s1">URL(urlStr)</span><span class="s2">;</span>
+            <span class="s1">HttpURLConnection request = (HttpURLConnection) url.openConnection()</span><span class="s2">;</span>
+            <span class="s1">request.setRequestMethod(</span><span class="s3">&quot;GET&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+            <span class="s0">if </span><span class="s1">(request.getResponseCode() != </span><span class="s4">200</span><span class="s1">) {</span>
+                <span class="s1">System.err.println(</span><span class="s3">&quot;Erro na API: HTTP &quot; </span><span class="s1">+ request.getResponseCode())</span><span class="s2">;</span>
+                <span class="s0">return </span><span class="s1">-</span><span class="s4">1</span><span class="s2">;</span>
+            <span class="s1">}</span>
+
+            <span class="s1">BufferedReader in = </span><span class="s0">new </span><span class="s1">BufferedReader(</span><span class="s0">new </span><span class="s1">InputStreamReader(request.getInputStream()))</span><span class="s2">;</span>
+            <span class="s1">StringBuilder resposta = </span><span class="s0">new </span><span class="s1">StringBuilder()</span><span class="s2">;</span>
+            <span class="s1">String linha</span><span class="s2">;</span>
+
+            <span class="s0">while </span><span class="s1">((linha = in.readLine()) != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s1">resposta.append(linha)</span><span class="s2">;</span>
+            <span class="s1">}</span>
+
+            <span class="s1">in.close()</span><span class="s2">;</span>
+
+            <span class="s1">System.out.println(</span><span class="s3">&quot;[DEBUG] Resposta da API: &quot; </span><span class="s1">+ resposta.toString())</span><span class="s2">;</span>
+
+            <span class="s1">Gson gson = </span><span class="s0">new </span><span class="s1">Gson()</span><span class="s2">;</span>
+            <span class="s1">ExchangeResponse dados = gson.fromJson(resposta.toString()</span><span class="s2">, </span><span class="s1">ExchangeResponse.</span><span class="s0">class</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s0">return </span><span class="s1">dados.getConversionRate()</span><span class="s2">;</span>
+
+
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception e) {</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Erro ao conectar com a API: &quot; </span><span class="s1">+ e.getMessage())</span><span class="s2">;</span>
+            <span class="s0">return </span><span class="s1">-</span><span class="s4">1</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

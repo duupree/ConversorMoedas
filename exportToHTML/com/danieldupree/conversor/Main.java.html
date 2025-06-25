@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #7ec3e6;}
+.s4 { color: #54b33e;}
+.s5 { color: #33ccff; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.danieldupree.conversor</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s2">;</span>
+
+
+
+<span class="s3">//TIP To &lt;b&gt;Run&lt;/b&gt; code, press &lt;shortcut actionId=&quot;Run&quot;/&gt; or</span>
+<span class="s3">// click the &lt;icon src=&quot;AllIcons.Actions.Execute&quot;/&gt; icon in the gutter.</span>
+<span class="s0">public class </span><span class="s1">Main {</span>
+    <span class="s0">public static void </span><span class="s1">main(String[] args) {</span>
+        <span class="s1">Scanner entrada = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+
+        <span class="s0">while </span><span class="s1">(</span><span class="s0">true</span><span class="s1">) {</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">==== Conversor de Moedas ====&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;1 - Dólar para Real&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;2 - Real para Dólar&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;3 - Euro para Real&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;4 - Real para Euro&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;5 - Dólar para Euro&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;6 - Euro para Dólar&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;7 - Sair&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s4">&quot;Escolha uma opção: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s0">int </span><span class="s1">opcao = entrada.nextInt()</span><span class="s2">;</span>
+
+            <span class="s0">if </span><span class="s1">(opcao == </span><span class="s5">7</span><span class="s1">) {</span>
+                <span class="s1">System.out.println(</span><span class="s4">&quot;Saindo do programa. Até logo!&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s0">break</span><span class="s2">;</span>
+            <span class="s1">}</span>
+
+            <span class="s1">System.out.println(</span><span class="s4">&quot;Digite o valor que deseja converter: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s0">double </span><span class="s1">valor = entrada.nextDouble()</span><span class="s2">;</span>
+
+            <span class="s0">switch </span><span class="s1">(opcao) {</span>
+                <span class="s0">case </span><span class="s5">1 </span><span class="s1">-&gt; ConversorMoedas.converter(</span><span class="s4">&quot;USD&quot;</span><span class="s2">, </span><span class="s4">&quot;BRL&quot;</span><span class="s2">, </span><span class="s1">valor)</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">2 </span><span class="s1">-&gt; ConversorMoedas.converter(</span><span class="s4">&quot;BRL&quot;</span><span class="s2">, </span><span class="s4">&quot;USD&quot;</span><span class="s2">, </span><span class="s1">valor)</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">3 </span><span class="s1">-&gt; ConversorMoedas.converter(</span><span class="s4">&quot;EUR&quot;</span><span class="s2">, </span><span class="s4">&quot;BRL&quot;</span><span class="s2">, </span><span class="s1">valor)</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">4 </span><span class="s1">-&gt; ConversorMoedas.converter(</span><span class="s4">&quot;BRL&quot;</span><span class="s2">, </span><span class="s4">&quot;EUR&quot;</span><span class="s2">, </span><span class="s1">valor)</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">5 </span><span class="s1">-&gt; ConversorMoedas.converter(</span><span class="s4">&quot;USD&quot;</span><span class="s2">, </span><span class="s4">&quot;EUR&quot;</span><span class="s2">, </span><span class="s1">valor)</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">6 </span><span class="s1">-&gt; ConversorMoedas.converter(</span><span class="s4">&quot;EUR&quot;</span><span class="s2">, </span><span class="s4">&quot;USD&quot;</span><span class="s2">, </span><span class="s1">valor)</span><span class="s2">;</span>
+                <span class="s0">default </span><span class="s1">-&gt; System.out.println(</span><span class="s4">&quot;Opção inválida!&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+
+        <span class="s1">entrada.close()</span><span class="s2">;</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

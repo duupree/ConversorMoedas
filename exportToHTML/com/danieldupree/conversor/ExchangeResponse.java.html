@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>ExchangeResponse.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #54b33e;}
+.s4 { color: #7ec3e6;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ExchangeResponse.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.danieldupree.conversor</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com.google.gson.annotations.SerializedName</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">ExchangeResponse {</span>
+    <span class="s1">@SerializedName(</span><span class="s3">&quot;base_code&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">String baseCode</span><span class="s2">;</span>
+
+    <span class="s1">@SerializedName(</span><span class="s3">&quot;target_code&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">String targetCode</span><span class="s2">;</span>
+
+    <span class="s1">@SerializedName(</span><span class="s3">&quot;conversion_rate&quot;</span><span class="s1">)  </span><span class="s4">// Mapeia o campo do JSON corretamente</span>
+    <span class="s0">private double </span><span class="s1">conversionRate</span><span class="s2">;</span>
+
+    <span class="s0">public double </span><span class="s1">getConversionRate() {</span>
+        <span class="s0">return </span><span class="s1">conversionRate</span><span class="s2">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
